@@ -6,7 +6,7 @@ public interface FournisseurDAO {
 
     void insert (Fournisseur fournisseur);
 
-    void update (Fournisseur fournisseur);
+    void update(String ancienNom, String nouveauNom);
 
     void delete (int id);
 

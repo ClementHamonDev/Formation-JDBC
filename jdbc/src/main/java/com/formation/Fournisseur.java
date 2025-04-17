@@ -9,7 +9,7 @@ public class Fournisseur {
 
     }
 
-    public Fournisseur(String nom){
+    public Fournisseur(int id2, String nom){
         this.nom = nom;
     }
 
