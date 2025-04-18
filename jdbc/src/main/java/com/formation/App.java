@@ -2,6 +2,7 @@ package com.formation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,8 +34,20 @@ public class App {
             if (resultat) {
                 // TODO
             }
+
+            String insertString = "INSERT INTO Client (nom) VALUES (?)";
+            try(PreparedStatement ps = conn.prepareStatement(insertString)){
+
+                String[] noms = {"Clément", "Axel", "Adam"};
+                for(String nom : noms){
+                    ps.setString(1, nom);
+                    ps.executeUpdate();
+                    System.out.println("CLient ajouté : " + nom);
+                }
+            }
+
             while (rs.next()) {
-                System.out.println(rs.getInt("id") + " - " + rs.getString("nom"));
+                // System.out.println(rs.getInt("id") + " - " + rs.getString("nom"));
             }
 
         } catch (SQLException e) {
